@@ -8,7 +8,6 @@ class Registro():
 
     def add(self,info):
         gana = False
-        self.grupos
         grupo = None
         grupo = filter(lambda n: Grupo(n).id == (Info_Mensaje).id_chat, self.grupos)
         if grupo == None:
