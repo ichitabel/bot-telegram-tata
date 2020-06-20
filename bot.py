@@ -69,8 +69,7 @@ def enviar_mensaje(idChat, texto):
     return ''
 
 def info_mensaje(mensaje):
-
-        """"if "text" in mensaje["message"]:
+        if "text" in mensaje["message"]:
             tipo_sms ="texto"
         elif "sticker" in  mensaje["message"]:
             tipo_sms = "sticker"
@@ -79,7 +78,7 @@ def info_mensaje(mensaje):
         elif "photo" in mensaje["message"]:
             tipo_sms = "foto"
         else:
-            tipo_sms = "otro"""""
+            tipo_sms = "otro"
         tipo_sms ="texto"
         update_id = mensaje['update_id']
         persona = mensaje['message']['from']['first_name']
