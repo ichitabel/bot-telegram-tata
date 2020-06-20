@@ -25,7 +25,7 @@ def main():
                 enviar_mensaje(info.id_chat,
                                            " No tenemos rango Equis De")
                 #self.enviar_mensaje(Info_Mensaje(info).id_chat, self.puntuacion(Info_Mensaje(info).id_chat))
-            """elif str(leer_mensaje(sms)).lower() == "pole":
+            elif str(leer_mensaje(sms)).lower() == "pole":
                 date = unix_date(info.date)
                 pole = is_pole(date)
                 if pole != -1:
@@ -41,7 +41,7 @@ def main():
                                            " Te mamaste")
                 else:
                     enviar_mensaje(info.id_chat,
-                                           " No son horas de pole idiota ")"""
+                                           " No son horas de pole idiota ")
         return ''
 
 
@@ -56,7 +56,7 @@ def main():
    #         text + persona.nombre + " " + str(persona.cant)+"\n"
 
 def leer_mensaje(mensaje):
-        texto = mensaje["message"]["text"]
+        texto = mensaje['message']['text']
         return texto
 
 def enviar_mensaje(idChat, texto):
