@@ -85,7 +85,8 @@ def info_mensaje(mensaje):
         persona = mensaje['message']['from']['first_name']
         id_persona = mensaje['message']['from']['id']
         bot = mensaje['message']['from']['is_bot']
-        chat = mensaje['message']['chat']['first_name']
+        #chat = mensaje['message']['chat']['first_name']
+        chat = "el pingas"
         id_chat = mensaje['message']['chat']['id']
         tipo_chat = mensaje['message']['chat']['type']
         date = mensaje['message']['date']
