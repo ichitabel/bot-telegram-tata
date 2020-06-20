@@ -1,7 +1,8 @@
 from Info_Mensaje import Info_Mensaje
 class Registro():
-    def init(self):
-        self.grupos = []
+    grupos = []
+    def init(self,grupos = []):
+        self.grupos = grupos
 
 
     def add(self,info):
