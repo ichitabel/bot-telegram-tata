@@ -19,7 +19,7 @@ num_pole = 0
 @app.route('/',methods=['Post'])
 def main():
         sms = request.json
-        info = Info_Mensaje(info_mensaje(sms))
+        info = info_mensaje(sms)
         if not info.is_bot and info.tipo_sms == "texto":
             if str(leer_mensaje(sms)).lower() == "!polerank":
                 enviar_mensaje(info.id_chat,
