@@ -1,4 +1,3 @@
-from Conexion import Conexion
 from Info_Mensaje import Info_Mensaje
 from Registro import Registro
 import json
