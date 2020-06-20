@@ -6,7 +6,7 @@ class Registro():
 
     def add(self,info):
         gana = False
-        id = Info_Mensaje(info).id_chat
+        id = info.id_chat
         grupo = filter(lambda n: n == id, self.grupos)
         if grupo == None:
             self.grupos.append(id)
