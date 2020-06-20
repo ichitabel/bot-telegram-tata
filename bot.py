@@ -93,17 +93,16 @@ def info_mensaje(mensaje):
         return Info_Mensaje( persona, id_persona , bot, chat, id_chat, tipo_chat, tipo_sms, date,update_id)
 
 def is_pole(date):
-        fecha = time(date)
         lista = [[time(3),time(4)],[time(9),time(10)],[time(15),time(16)],[time(21),time(22)]]
         pole = -1
         for i in range(0, lista.__len__()-1):
-            if fecha >= lista[i][0] and fecha < lista[i][1]:
+            if date >= lista[i][0] and date < lista[i][1]:
                 pole = i
                 break
         return pole
 
 def unix_date(fecha):
-        return datetime.fromtimestamp(fecha).strftime("%H:%M:%S")
+        return datetime.fromtimestamp(fecha).time()
 
 if __name__ == '__main__':  
         app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
