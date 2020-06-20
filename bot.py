@@ -12,7 +12,6 @@ from datetime import datetime,time
 BOT_URL = f'https://api.telegram.org/bot{os.environ["BOT_KEY"]}/'  # <-- add your telegram token as environment variable
 
 app = Flask(__name__)
-num_pole = 0
 
 
 
@@ -29,9 +28,9 @@ def main():
                 date = unix_date(info.date)
                 pole = is_pole(date)
                 if pole != -1:
-                    if pole != num_pole:
+                    if pole != temp.num_pole:
                         registro = Registro()
-                        num_pole = pole
+                        temp.num_pole = pole
                     if (registro.add(info)):
                         enviar_mensaje(info.id_chat,
                                             info.persona + " ha ganado la pole XD")
@@ -101,6 +100,9 @@ def is_pole(date):
 
 def unix_date(fecha):
         return datetime.fromtimestamp(fecha).time()
+
+class temp():
+    num_pole = 0
 
 if __name__ == '__main__':  
         app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
