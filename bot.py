@@ -24,7 +24,7 @@ def main():
             #El mensaje es '!polerank'
             if str(leer_mensaje(sms)).lower() == "!polerank":
                 if not info.tipo_chat.lower() == "private":
-                    puntos = servicio.puntuacion()
+                    puntos = servicio.puntuacion(info.id_chat)
                     ranking = str_puntuacion(puntos)
                     enviar_mensaje(info.id_chat,ranking)
                 else:
