@@ -62,12 +62,12 @@ def str_puntuacion(lista):
     result = ""
     for i in lista:
         id = i.id_persona
-        print(id)
-        json_data = {
+        """json_data = {
         "id": id,
         }
         message_url = BOT_URL + 'getFullUser'
-        persona = requests.post(message_url, json=json_data)
+        persona = requests.post(message_url, json=json_data)"""
+        persona = requests.get(BOT_URL+"getFullUser?id="+str(id))
         wi = persona.json()
         print(wi)
         nombre = wi['user']['first_name']
