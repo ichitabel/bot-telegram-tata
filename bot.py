@@ -13,8 +13,6 @@ BOT_URL = f'https://api.telegram.org/bot{os.environ["BOT_KEY"]}/'  # <-- add you
 
 app = Flask(__name__)
 
-
-
 @app.route('/',methods=['Post'])
 def main():
         sms = request.json
@@ -25,34 +23,27 @@ def main():
                                            " No tenemos rango Equis De")
                 #self.enviar_mensaje(Info_Mensaje(info).id_chat, self.puntuacion(Info_Mensaje(info).id_chat))
             elif str(leer_mensaje(sms)).lower() == "pole":
-                date = unix_date(info.date)
-                pole = is_pole(date)
-                if pole != -1:
-                    if pole != temp.num_pole:
-                        temp.registro = Registro()
-                        temp.num_pole = pole
-                    if (temp.registro.add(info)):
-                        enviar_mensaje(info.id_chat,
+                if not info.tipo_chat.lower() == "private":
+                    date = unix_date(info.date)
+                    pole = is_pole(date)
+                    if pole != -1:
+                        if pole != temp.num_pole:
+                            temp.registro = Registro()
+                            temp.num_pole = pole
+                        if (temp.registro.add(info)):
+                            enviar_mensaje(info.id_chat,
                                             info.persona + " ha ganado la pole XD")
                         #Servicios.add(Info_Mensaje(info).id_chat, Info_Mensaje(info).id_persona)
-                    else :
-                        enviar_mensaje(info.id_chat,
+                        else :
+                            enviar_mensaje(info.id_chat,
                                            " Te mamaste")
+                    else:
+                        enviar_mensaje(info.id_chat,
+                                           " No son horas de pole idiota ")
                 else:
                     enviar_mensaje(info.id_chat,
-                                           " No son horas de pole idiota ")
+                                           "La pole solo está habilitada en grupos o supergrupos")
         return ''
-
-
-
-
-
-  #  def mostrar(self,idGrupo ):
-
-   #     grupo = filter(lambda n: n.id == idGrupo,self.grupos)
-    #    text = grupo.nombre +"\n..............\n"
-  #      for persona in grupo.personas:
-   #         text + persona.nombre + " " + str(persona.cant)+"\n"
 
 def leer_mensaje(mensaje):
         texto = mensaje['message']['text']
@@ -78,14 +69,20 @@ def info_mensaje(mensaje):
             tipo_sms = "foto"
         else:
             tipo_sms = "otro"
+        
+        tipo_chat = mensaje['message']['chat']['type']
+
+        chat = ""
+        if not tipo_chat.lower() == "private":
+            chat = mensaje['message']['chat']['first_name']
+        else:
+            chat = tipo_chat
+
         update_id = mensaje['update_id']
         persona = mensaje['message']['from']['first_name']
         id_persona = mensaje['message']['from']['id']
         bot = mensaje['message']['from']['is_bot']
-        #chat = mensaje['message']['chat']['first_name']
-        chat = "el pingas"
         id_chat = mensaje['message']['chat']['id']
-        tipo_chat = mensaje['message']['chat']['type']
         date = mensaje['message']['date']
         return Info_Mensaje( persona, id_persona , bot, chat, id_chat, tipo_chat, tipo_sms, date,update_id)
 
