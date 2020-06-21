@@ -87,7 +87,14 @@ def enviar_mensaje(idChat, texto):
 
 def info_mensaje(mensaje):
     tipo_sms = "texto_editado"
-    tipo_chat,chat,update_id,persona,id_persona,bot,id_chat,date = None
+    tipo_chat = None
+    chat = None
+    update_id = None
+    persona = None
+    id_persona = None
+    bot = None 
+    id_chat = None
+    date = None
     if "message" in mensaje:
         if "text" in mensaje["message"]:
             tipo_sms ="texto"
