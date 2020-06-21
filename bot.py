@@ -67,12 +67,12 @@ def str_puntuacion(lista):
         }
         message_url = BOT_URL + 'getFullUser'
         persona = requests.post(message_url, json=json_data)"""
-        persona = requests.get("https://api.telegram.org/"+"getFullUser?id="+str(id))
-        wi = persona.json()
-        print(wi)
-        nombre = wi['user']['first_name']
-        result = result + nombre + "--"
-        result = result + i.cantidad + "\n"
+        #persona = requests.get(BOT_URL+"getFullUser?id="+str(id))
+        #wi = persona.json()
+        #print(wi)
+        #nombre = wi['user']['first_name']
+        result = result + "tg://user?id="+str(id) + " --"
+        result = result + str(i.cantidad) + "\n"
     return result
 
 def enviar_mensaje(idChat, texto):
