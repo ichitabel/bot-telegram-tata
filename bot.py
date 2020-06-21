@@ -67,7 +67,7 @@ def str_puntuacion(lista):
         }
         message_url = BOT_URL + 'getFullUser'
         persona = requests.post(message_url, json=json_data)"""
-        persona = requests.get(BOT_URL+"getFullUser?id="+str(id))
+        persona = requests.get(BOT_URL+"pene?id="+str(id))
         wi = persona.json()
         print(wi)
         nombre = wi['user']['first_name']
