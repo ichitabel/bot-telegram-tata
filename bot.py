@@ -74,7 +74,7 @@ def info_mensaje(mensaje):
 
         chat = ""
         if not tipo_chat.lower() == "private":
-            chat = mensaje['message']['chat']['first_name']
+            chat = mensaje['message']['chat']['title']
         else:
             chat = tipo_chat
 
