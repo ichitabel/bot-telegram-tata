@@ -19,6 +19,7 @@ servicio = Servicios.Servicios()
 @app.route('/',methods=['Post'])
 def main():
         sms = request.json
+        print(sms)
         info = info_mensaje(sms)
         if not info.is_bot and info.tipo_sms == "texto":
             #El mensaje es '!polerank'
