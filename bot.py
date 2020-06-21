@@ -7,6 +7,7 @@ import os
 import requests
 from flask import Flask, request
 from datetime import datetime,time
+import Persona
 
 
 BOT_URL = f'https://api.telegram.org/bot{os.environ["BOT_KEY"]}/'  # <-- add your telegram token as environment variable
@@ -23,8 +24,9 @@ def main():
             #El mensaje es '!polerank'
             if str(leer_mensaje(sms)).lower() == "!polerank":
                 if not info.tipo_chat.lower() == "private":
-                    enviar_mensaje(info.id_chat,
-                                           " No tenemos rango Equis De")
+                    puntos = servicio.puntuacion()
+                    ranking = str_puntuacion(puntos)
+                    enviar_mensaje(info.id_chat,ranking)
                 else:
                     enviar_mensaje(info.id_chat,
                                            "La pole solo está habilitada en grupos o supergrupos")    
@@ -53,8 +55,22 @@ def main():
         return ''
 
 def leer_mensaje(mensaje):
-        texto = mensaje['message']['text']
-        return texto
+    texto = mensaje['message']['text']
+    return texto
+
+def str_puntuacion(lista):
+    result = ""
+    for i in lista:
+        id = i.id_persona
+        json_data = {
+        "id": id,
+        }
+        message_url = BOT_URL + 'getFullUser'
+        persona = requests.post(message_url, json=json_data)
+        nombre = persona['user']['first_name']
+        result = result + nombre + "--"
+        result = result + i.cantidad + "\n"
+    return result
 
 def enviar_mensaje(idChat, texto):
     json_data = {
