@@ -86,6 +86,9 @@ def enviar_mensaje(idChat, texto):
     return ''
 
 def info_mensaje(mensaje):
+    tipo_sms = "texto_editado"
+    tipo_chat,chat,update_id,persona,id_persona,bot,id_chat,date = none
+    if "message" in mensaje:
         if "text" in mensaje["message"]:
             tipo_sms ="texto"
         elif "sticker" in  mensaje["message"]:
@@ -111,7 +114,7 @@ def info_mensaje(mensaje):
         bot = mensaje['message']['from']['is_bot']
         id_chat = mensaje['message']['chat']['id']
         date = mensaje['message']['date']
-        return Info_Mensaje( persona, id_persona , bot, chat, id_chat, tipo_chat, tipo_sms, date,update_id)
+    return Info_Mensaje( persona, id_persona , bot, chat, id_chat, tipo_chat, tipo_sms, date,update_id)
 
 def is_pole(date):
         lista = [[time(3),time(8,59)],[time(9),time(14,59)],[time(15),time(20,59)],[time(21),time(23,59)]]
