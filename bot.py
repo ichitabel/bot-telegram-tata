@@ -25,8 +25,8 @@ def main():
             if str(leer_mensaje(sms)).lower() == "!polerank":
                 if not info.tipo_chat.lower() == "private":
                     puntos = servicio.puntuacion(info.id_chat)
-                    ranking = str_puntuacion(puntos)
-                    enviar_mensaje(info.id_chat,ranking)
+                    #ranking = str_puntuacion(puntos)
+                    enviar_mensaje(info.id_chat,"pene")
                 else:
                     enviar_mensaje(info.id_chat,
                                            "La pole solo está habilitada en grupos o supergrupos")    
