@@ -67,9 +67,10 @@ def str_puntuacion(lista):
         }
         message_url = BOT_URL + 'getFullUser'
         persona = requests.post(message_url, json=json_data)
-        wi = persona.json()
+        asina = persona.json()
+        wi = "pene"
         print(wi)
-        nombre = wi['user']['first_name']
+        nombre = asina['user']['first_name']
         result = result + nombre + "--"
         result = result + i.cantidad + "\n"
     return result
