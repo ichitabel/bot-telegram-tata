@@ -20,11 +20,11 @@ servicio = Servicios.Servicios()
 def main():
         sms = request.json
         info = info_mensaje(sms)
-        """if not info.is_bot:
+        if not info.is_bot:
             if servicio.existe_persona(info.id_persona):
                 servicio.actualizar_persona(info.id_persona,info.persona)
             else:
-                servicio.annadir_persona(info.id_persona,info.persona)"""
+                servicio.annadir_persona(info.id_persona,info.persona)
         if not info.is_bot and info.tipo_sms == "texto":
             #El mensaje es '!polerank'
             if str(leer_mensaje(sms)).lower() == "!polerank":
