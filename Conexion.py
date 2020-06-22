@@ -1,5 +1,6 @@
 import psycopg2
 import Singleton
+import os
 
 @Singleton.SingletonDecorator
 class Conexion:
