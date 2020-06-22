@@ -5,7 +5,7 @@ import Singleton
 class Conexion:
     def __init__(self):
         try:
-            self.miConexion = psycopg2.connect(dbname="d3e6itms38e4r5", user="sudvnykzdurqme", password="1d1ad100084a54a1192c4dcac82c88e2b93ebd42cd03849c6000776f81d989a5",host="ec2-3-216-129-140.compute-1.amazonaws.com")
+            self.miConexion = psycopg2.connect(dbname="dn43sr6l9fe8j", user="kmmfirqlfmuxce", password="8485bb0c2d4a98bf8993e3ad7ac24fc42e722ee5f20fa6d919b45e537b7e6034",host="ec2-34-230-231-71.compute-1.amazonaws.com")
         except:
             print("Error en la base de datos")
 
