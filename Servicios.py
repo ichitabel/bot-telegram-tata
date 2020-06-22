@@ -88,7 +88,7 @@ class Servicios():
         c.miConexion.commit()
         miCursor.close()
 
-    def add(self,grupo, persona):
+    def add_pole(self,grupo, persona):
         if self.existe_grupo(grupo):
             if self.persona_en_grupo(grupo, persona):
                 self.punto(grupo, persona)
@@ -96,5 +96,60 @@ class Servicios():
                 self.annadir_persona_pole(grupo, persona)
         else:
             self.annadir_persona_pole(grupo, persona)
+
+    def pole(self,info):
+        gana = False
+        id = info.id_chat
+        if not self.esta_grupo_registro(id):
+            self.annadir_grupo_registro(id)
+            gana = True
+        return gana
+
+    def esta_grupo_registro(self,id_grupo):
+        existe = False
+        c = Conexion.Conexion()
+        miCursor = c.miConexion.cursor()
+        param_list = [id_grupo]
+        miCursor.execute("SELECT * FROM registro WHERE registro.id_grupo = %s",param_list)
+        tabla = miCursor.fetchall() 
+        for row in tabla:
+            existe = True
+        miCursor.close()
+        return existe
+
+    def annadir_grupo_registro(self,id_grupo):
+        c = Conexion.Conexion()
+        miCursor = c.miConexion.cursor()
+        param_list = [id_grupo]
+        miCursor.execute("INSERT INTO registro(id_grupo)VALUES(%s)",param_list)
+        c.miConexion.commit()
+        miCursor.close()
+
+    def clean_registro(self):
+        c = Conexion.Conexion()
+        miCursor = c.miConexion.cursor()
+        miCursor.execute("DELETE from registro")
+        c.miConexion.commit()
+        miCursor.close()
+
+    def update_num_pole(self,numero):
+        c = Conexion.Conexion()
+        miCursor = c.miConexion.cursor()
+        param_list = [numero]
+        miCursor.execute("UPDATE num_pole SET numero_pole = %s",param_list)
+        c.miConexion.commit()
+        miCursor.close()
+
+    def obtener_num_pole(self):
+        num_pole = 30
+        c = Conexion.Conexion()
+        miCursor = c.miConexion.cursor()
+        miCursor.execute("SELECT * FROM num_pole")
+        tabla = miCursor.fetchall() 
+        for row in tabla:
+            num_pole = row[0]
+        c.miConexion.commit()
+        miCursor.close()
+        return num_pole
 
 
