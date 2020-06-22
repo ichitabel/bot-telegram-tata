@@ -20,6 +20,7 @@ servicio = Servicios.Servicios()
 def main():
         sms = request.json
         info = info_mensaje(sms)
+        print (sms)
         if not info.is_bot:
             if servicio.existe_persona(info.id_persona):
                 servicio.actualizar_persona(info.id_persona,info.persona)
