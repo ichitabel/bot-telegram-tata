@@ -124,7 +124,7 @@ def is_pole(date):
     lista = [[time(0,0),time(1,32)],[time(1,33),time(7,32)],[time(7,33),time(13,32)],[time(13,33),time(19,32)],[time(19,33),time(23,59)]]
     pole = -1
     for i in range(0, lista.__len__()-1):
-        if date >= lista[i][0] and date < lista[i][1]:
+        if date >= lista[i][0] and date <= lista[i][1]:
             if i == 0 or i == 4:
                 pole = 3
             elif i == 1:
@@ -147,8 +147,8 @@ def juntos(chat_id):
     espacios = result.split(',')
     espacios = espacios[1].split(':')
     dias = diferencia.days
-    horas = espacios[0]
-    mins = espacios[1]
+    horas = int(espacios[0])
+    mins = int(espacios[1])
     result = "Llevan juntos "+str(dias)+" días,"+str(horas)+" horas, y "+str(mins)+" minutos."
     enviar_mensaje(chat_id,result)
 
