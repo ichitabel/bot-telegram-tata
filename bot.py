@@ -19,8 +19,9 @@ servicio = Servicios.Servicios()
 @app.route('/',methods=['Post'])
 def main():
         sms = request.json
-        print(sms)
         info = info_mensaje(sms)
+        pene = datetime.now().time()
+        print(pene)
         if servicio.existe_persona(info.id_persona):
             servicio.actualizar_persona(info.id_persona,info.persona)
         else:
