@@ -123,7 +123,7 @@ def info_mensaje(mensaje):
 def is_pole(date):
     lista = [[time(0,0),time(1,32)],[time(1,33),time(7,32)],[time(7,33),time(13,32)],[time(13,33),time(19,32)],[time(19,33),time(23,59)]]
     pole = -1
-    for i in range(0, lista.__len__()-1):
+    for i in range(0, lista.__len__()):
         if date >= lista[i][0] and date <= lista[i][1]:
             if i == 0 or i == 4:
                 pole = 3
