@@ -20,8 +20,6 @@ servicio = Servicios.Servicios()
 def main():
         sms = request.json
         info = info_mensaje(sms)
-        pene = datetime.now().time()
-        print(pene)
         if servicio.existe_persona(info.id_persona):
             servicio.actualizar_persona(info.id_persona,info.persona)
         else:
@@ -58,6 +56,8 @@ def main():
                 else:
                     enviar_mensaje(info.id_chat,
                                            "La pole solo está habilitada en grupos o supergrupos")
+            elif str(leer_mensaje(sms)).lower() == "/juntos":
+                juntos(info.id_chat)
         return ''
 
 def leer_mensaje(mensaje):
@@ -138,6 +138,19 @@ def is_pole(date):
 
 def unix_date(fecha):
         return datetime.fromtimestamp(fecha).time()
+
+def juntos(chat_id):
+    juntos = datetime(2018,11,29,11,4)
+    ahora = datetime.now()
+    diferencia = ahora - juntos
+    result = str(diferencia)
+    espacios = result.split(',')
+    espacios = espacios[1].split(':')
+    dias = diferencia.days
+    horas = espacios[0]
+    mins = espacios[1]
+    result = "Llevan juntos "+str(dias)+" días,"+str(horas)+" horas, y "+str(mins)+" minutos."
+    enviar_mensaje(chat_id,result)
 
 if __name__ == '__main__':  
         app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
