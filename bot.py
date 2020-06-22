@@ -21,13 +21,17 @@ def main():
         sms = request.json
         print(sms)
         info = info_mensaje(sms)
+        if servicio.existe_persona(info.id_persona):
+            servicio.actualizar_persona(info.id_persona,info.persona)
+        else:
+            servicio.annadir_persona(info.id_persona,info.persona)
         if not info.is_bot and info.tipo_sms == "texto":
             #El mensaje es '!polerank'
             if str(leer_mensaje(sms)).lower() == "!polerank":
                 if not info.tipo_chat.lower() == "private":
                     puntos = servicio.puntuacion(info.id_chat)
-                    #ranking = str_puntuacion(puntos)
-                    enviar_mensaje(info.id_chat,"pene")
+                    ranking = str_puntuacion(puntos)
+                    enviar_mensaje(info.id_chat,ranking)
                 else:
                     enviar_mensaje(info.id_chat,
                                            "La pole solo está habilitada en grupos o supergrupos")    
@@ -62,18 +66,10 @@ def leer_mensaje(mensaje):
 def str_puntuacion(lista):
     result = ""
     for i in lista:
-        id = i.id_persona
-        """json_data = {
-        "id": id,
-        }
-        message_url = BOT_URL + 'getFullUser'
-        persona = requests.post(message_url, json=json_data)"""
-        #persona = requests.get(BOT_URL+"getFullUser?id="+str(id))
-        #wi = persona.json()
-        #print(wi)
-        #nombre = wi['user']['first_name']
-        result = result + "tg://user?id="+str(id) + " --"
-        result = result + str(i.cantidad) + "\n"
+        nombre = i.nombre_persona
+        puntos = i.cantidad
+        result = result + nombre + "--"
+        result = result + str(puntos) + "\n"
     return result
 
 def enviar_mensaje(idChat, texto):
