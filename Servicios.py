@@ -152,4 +152,10 @@ class Servicios():
         miCursor.close()
         return num_pole
 
+    def analizarPersona(self,id_persona,nombre_persona):
+        if self.existe_persona(id_persona):
+            self.actualizar_persona(id_persona,nombre_persona)
+        else:
+            self.annadir_persona(id_persona,nombre_persona)
+
 
