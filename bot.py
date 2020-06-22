@@ -42,10 +42,10 @@ def main():
                     date = unix_date(info.date)
                     pole = is_pole(date)
                     if pole != -1:
-                        if pole != temp.num_pole:
-                            temp.registro = Registro()
-                            temp.num_pole = pole
-                        if (temp.registro.add(info)):
+                        if pole != servicio.obtener_num_pole():
+                            servicio.clean_registro()
+                            servicio.update_num_pole(pole)
+                        if (servicio.pole()):
                             enviar_mensaje(info.id_chat,
                                             info.persona + " ha ganado la pole XD")
                             servicio.add(info.id_chat,info.id_persona)
@@ -138,12 +138,6 @@ def is_pole(date):
 
 def unix_date(fecha):
         return datetime.fromtimestamp(fecha).time()
-
-class temp():
-    num_pole = -1
-    registro = Registro()
-    def __init__(self):
-        pass
 
 if __name__ == '__main__':  
         app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
