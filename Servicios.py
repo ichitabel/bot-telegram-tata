@@ -68,18 +68,6 @@ class Servicios():
         c.miConexion.commit()
         miCursor.close()
 
-    def existe_persona(self,id):
-        existe = False
-        c = Conexion.Conexion()
-        miCursor = c.miConexion.cursor()
-        param_list = [id]
-        miCursor.execute("SELECT * FROM persona WHERE persona.id_persona = %s",param_list)
-        tabla = miCursor.fetchall() 
-        for row in tabla:
-            existe = True
-        miCursor.close()
-        return existe
-
     def punto(self,grupo,persona):
         c = Conexion.Conexion()
         miCursor = c.miConexion.cursor()
@@ -153,9 +141,21 @@ class Servicios():
         return num_pole
 
     def analizarPersona(self,id_persona,nombre_persona):
-        if self.existe_persona(id_persona):
+        if self.tengo_persona(id_persona):
             self.actualizar_persona(id_persona,nombre_persona)
         else:
             self.annadir_persona(id_persona,nombre_persona)
+
+    def tengo_persona(self,id_persona):
+        existe = False
+        c = Conexion.Conexion()
+        miCursor = c.miConexion.cursor()
+        param_list = [id_persona]
+        miCursor.execute("SELECT * FROM persona WHERE id_persona = %s",param_list)
+        tabla = miCursor.fetchall() 
+        for row in tabla:
+            existe = True
+        miCursor.close()
+        return existe
 
 
