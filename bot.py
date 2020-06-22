@@ -45,7 +45,7 @@ def main():
                         if pole != servicio.obtener_num_pole():
                             servicio.clean_registro()
                             servicio.update_num_pole(pole)
-                        if (servicio.pole()):
+                        if (servicio.pole(info)):
                             enviar_mensaje(info.id_chat,
                                             info.persona + " ha ganado la pole XD")
                             servicio.add(info.id_chat,info.id_persona)
