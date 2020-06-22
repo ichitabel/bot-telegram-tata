@@ -48,7 +48,7 @@ def main():
                         if (servicio.pole(info)):
                             enviar_mensaje(info.id_chat,
                                             info.persona + " ha ganado la pole XD")
-                            servicio.add(info.id_chat,info.id_persona)
+                            servicio.add_pole(info.id_chat,info.id_persona)
                         else :
                             enviar_mensaje(info.id_chat,
                                            " Te mamaste")
