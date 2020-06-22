@@ -140,7 +140,7 @@ def unix_date(fecha):
         return datetime.fromtimestamp(fecha).time()
 
 def juntos(chat_id):
-    juntos = datetime(2018,11,29,11,4)
+    juntos = datetime(2018,11,29,17,4)
     ahora = datetime.now()
     diferencia = ahora - juntos
     result = str(diferencia)
