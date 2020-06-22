@@ -8,6 +8,7 @@ import requests
 from flask import Flask, request
 from datetime import datetime,time
 import Persona
+import telebot
 
 
 BOT_URL = f'https://api.telegram.org/bot{os.environ["BOT_KEY"]}/'  # <-- add your telegram token as environment variable
@@ -15,6 +16,8 @@ BOT_URL = f'https://api.telegram.org/bot{os.environ["BOT_KEY"]}/'  # <-- add you
 app = Flask(__name__)
 
 servicio = Servicios.Servicios()
+
+bot = telebot.TeleBot(os.environ["BOT_KEY"])
 
 @app.route('/',methods=['Post'])
 def main():
@@ -133,12 +136,13 @@ def is_pole(date):
                 pole = 1
             elif i == 3:
                 pole = 2
-                break
+            break
     return pole
 
 def unix_date(fecha):
         return datetime.fromtimestamp(fecha).time()
 
+@bot.message_handler(commands=["juntos"])
 def juntos(chat_id):
     juntos = datetime(2018,11,29,17,4)
     ahora = datetime.now()
