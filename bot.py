@@ -57,6 +57,8 @@ def main():
                                            "La pole solo está habilitada en grupos o supergrupos")
             elif str(leer_mensaje(sms)).lower() == "/juntos" or str(leer_mensaje(sms)).lower() == "/juntos@taticabot":
                 juntos(info.id_chat)
+            elif str(leer_mensaje(sms)).lower() == "/felicidades" or str(leer_mensaje(sms)).lower() == "/felicidades@taticabot":
+                felicidades(info.id_chat)
         return ''
 
 def leer_mensaje(mensaje):
@@ -64,11 +66,11 @@ def leer_mensaje(mensaje):
     return texto
 
 def str_puntuacion(lista):
-    result = ""
+    result = "Puntos 💜 + \n"
     for i in lista:
         nombre = i.nombre_persona
         puntos = i.cantidad
-        result = result + nombre + "--"
+        result = result + nombre + "-->"
         result = result + str(puntos) + "\n"
     return result
 
@@ -150,6 +152,27 @@ def juntos(chat_id):
     mins = int(espacios[1])
     result = "Llevan juntos "+str(dias)+" días,"+str(horas)+" horas, y "+str(mins)+" minutos."
     enviar_mensaje(chat_id,result)
+    is29(chat_id)
+
+def felicidades(chat_id):
+    result = "Feliz cumpleaños Tata. Finalmente aquí tenemos a TataBot 1.0. Espero que te encanten este y todos los regalos porque te lo mereces. Te amo guapo ❤ 😍 😘"
+    enviar_mensaje(chat_id,result)
+
+def is29(chat_id):
+    es = False
+    result = "Por cierto feliz mesiversario!!!"
+    hoy = datetime.today()
+    dia = hoy.day
+    mes = hoy.month
+    if not mes == 2:
+        if dia == 29:
+            es = True
+    elif dia == 28:
+        es = True
+    if es:
+        enviar_mensaje(chat_id,result)
+
+    
 
 if __name__ == '__main__':  
         app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
