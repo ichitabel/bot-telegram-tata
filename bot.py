@@ -122,7 +122,7 @@ def info_mensaje(mensaje):
     return Info_Mensaje( persona, id_persona , bot, chat, id_chat, tipo_chat, tipo_sms, date,update_id)
 
 def is_pole(date):
-    lista = [[time(0,0),time(1,33)],[time(1,33),time(7,33)],[time(7,33),time(13,33)],[time(13,33),time(19,33)],[time(19,33),time(0,0)]]
+    lista = [[time(0,0),time(1,33)],[time(1,33),time(7,33)],[time(7,33),time(13,33)],[time(13,33),time(19,33)],[time(19,33),time(23,59,999999)]]
     pole = -1
     for i in range(0, lista.__len__()):
         if date >= lista[i][0] and date < lista[i][1]:
