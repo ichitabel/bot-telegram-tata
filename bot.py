@@ -20,7 +20,7 @@ servicio = Servicios.Servicios()
 def main():
         sms = request.json
         info = info_mensaje(sms)
-        print(info)
+        print(sms)
         """"if not info.is_bot:
             servicio.analizarPersona(info.id_persona,info.persona)"""
         if not info.is_bot and info.tipo_sms == "texto":
