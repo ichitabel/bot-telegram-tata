@@ -66,7 +66,7 @@ def leer_mensaje(mensaje):
     return texto
 
 def str_puntuacion(lista):
-    result = "Puntos 💜 + \n"
+    result = "Puntos 💜"+ "\n"
     for i in lista:
         nombre = i.nombre_persona
         puntos = i.cantidad
@@ -150,12 +150,12 @@ def juntos(chat_id):
     dias = diferencia.days
     horas = int(espacios[0])
     mins = int(espacios[1])
-    result = "Llevan juntos "+str(dias)+" días,"+str(horas)+" horas, y "+str(mins)+" minutos."
+    result = "Llevan juntos "+str(dias)+" días, "+str(horas)+" horas, y "+str(mins)+" minutos."
     enviar_mensaje(chat_id,result)
     is29(chat_id)
 
 def felicidades(chat_id):
-    result = "Feliz cumpleaños Tata. Finalmente aquí tenemos a TataBot 1.0. Espero que te encanten este y todos los regalos porque te lo mereces. Te amo guapo ❤ 😍 😘"
+    result = "Feliz cumpleaños Tata. Finalmente aquí tenemos a TataBot 1.0. Espero que te encanten este y todos los regalos porque te los mereces. Te amo guapo ❤ 😍 😘"
     enviar_mensaje(chat_id,result)
 
 def is29(chat_id):
