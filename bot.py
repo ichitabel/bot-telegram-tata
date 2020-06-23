@@ -55,7 +55,7 @@ def main():
                 else:
                     enviar_mensaje(info.id_chat,
                                            "La pole solo está habilitada en grupos o supergrupos")
-            elif str(leer_mensaje(sms)).lower() == "/juntos" or str(leer_mensaje(sms)).lower() == "/juntos@TaticaBot":
+            elif str(leer_mensaje(sms)).lower() == "/juntos" or str(leer_mensaje(sms)).lower() == "/juntos@taticabot":
                 juntos(info.id_chat)
         return ''
 
