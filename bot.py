@@ -21,8 +21,9 @@ def main():
         sms = request.json
         info = info_mensaje(sms)
         print(info)
-        """if not info.is_bot:
-            servicio.analizarPersona(info.id_persona,info.persona)"""
+        if not info.id_persona == None:
+            if not info.is_bot:
+                servicio.analizarPersona(info.id_persona,info.persona)
         if not info.is_bot and info.tipo_sms == "texto":
             #El mensaje es '!polerank'
             if str(leer_mensaje(sms)).lower() == "!polerank":
