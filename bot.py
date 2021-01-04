@@ -60,6 +60,8 @@ def main():
                 juntos(info.id_chat)
             elif str(leer_mensaje(sms)).lower() == "/felicidades" or str(leer_mensaje(sms)).lower() == "/felicidades@taticabot":
                 felicidades(info.id_chat)
+            elif str(leer_mensaje(sms)).lower() == "polele":
+                enviar_mensaje(info.id_chat,"Felicidades, has ganado la polele, es inútil, pero es la polele!!!")
         return ''
 
 def leer_mensaje(mensaje):
@@ -123,7 +125,7 @@ def info_mensaje(mensaje):
     return Info_Mensaje( persona, id_persona , bot, chat, id_chat, tipo_chat, tipo_sms, date,update_id)
 
 def is_pole(date):
-    lista = [[time(0,0),time(1,33)],[time(1,33),time(7,33)],[time(7,33),time(13,33)],[time(13,33),time(19,33)],[time(19,33),time(23,59,59,999999)]]
+    lista = [[time(0,0),time(2,33)],[time(2,33),time(8,33)],[time(8,33),time(14,33)],[time(14,33),time(20,33)],[time(20,33),time(23,59,59,999999)]]
     pole = -1
     for i in range(0, lista.__len__()):
         if date >= lista[i][0] and date < lista[i][1]:
